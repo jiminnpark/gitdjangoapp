@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container ">
+
+    <form class="mt-5 p-5" method="POST" action="/contact" id="contactform">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="name" >Enter Your Name</label>
+            <input type="text" class="form-control" required="true" name="name" id="name" placeholder="Full Name">
+        </div>
+        <div class="form-group">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" name="email" id="email" placeholder="abc@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="phone" class="form-control" name="phone" id="phone" placeholder="abc@gmail.com">
+        </div>
+        <div class="form-group">
+            <label for="query">Your Query</label>
+            <textarea class="form-control" name="query" id="query" rows="3"></textarea>
+        </div>
+
+        <button type="button"  class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            Submit
+        </button>
+    
+
+
+    <!-- Modal -->
+    <center>
+        <div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1"
+            role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header ">
+                        <p class="modal-title col-sm-11 " style="color:blue;font-size:20px;" id="staticBackdropLabel">
+                            <b>Thanks for the Feedback</b></p>
+
+                        <button type="button" class="close col-sm-1 " onclick='document.getElementById("contactform").submit();' data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Your Message has been sent successfully!
+                    </div>
+                    <div class="modal-footer">
+                        <p style="margin:auto;color:green;"> We'll get back to you soon</p>
+                        <button type="button" class="btn btn-success" onclick='document.getElementById("contactform").submit();' data-dismiss="modal">Close</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </center>
+    </form>
+
+    {% endblock body %}
